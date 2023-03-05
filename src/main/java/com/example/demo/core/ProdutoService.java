@@ -1,6 +1,5 @@
 package com.example.demo.core;
 
-import com.example.demo.api.exceptions.ProdutoValidationException;
 import com.example.demo.model.Produto;
 import com.example.demo.model.Produtos;
 import org.springframework.stereotype.Service;
@@ -16,8 +15,8 @@ public class ProdutoService {
                 Produto.builder().id(2).descricao("Água Sanitária").build(),
                 Produto.builder().id(3).descricao("Detergente").build());
 
-        throw new ProdutoValidationException("Erro");
+        //throw new ProdutoValidationException("Erro");
 
-        //return Produtos.builder().produtos(produtos).build();
+        return Produtos.builder().produtos(produtos).build();
     }
 }
