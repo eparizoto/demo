@@ -19,6 +19,8 @@ public class AuthorizationDecoder {
 
     public TokenDados parseToken(String token){
 
+        log.info("Validando token...");
+
         TokenDados tokenDados = null;
 
         try {
@@ -41,6 +43,8 @@ public class AuthorizationDecoder {
 
         if (new Date().toInstant().getEpochSecond() > tokenDados.getExpiracao().getTime())
             throw new TokenInvalidoException("Acesso ao sistema não foi permitido. Token expirado.");
+
+        log.info("Token validado com sucesso !");
 
         return tokenDados;
     }

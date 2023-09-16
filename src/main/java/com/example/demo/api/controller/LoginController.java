@@ -22,6 +22,8 @@ public class LoginController {
     @GetMapping(value = "/token", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Token> getToken(@RequestParam(value = "nomeUsuario") String nomeUsuario, @RequestParam(value = "funcional") Long funcional){
 
+        log.info("Gerando token...");
+
         return ResponseEntity.ok(loginService.getToken(nomeUsuario, funcional));
     }
 }

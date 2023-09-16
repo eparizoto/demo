@@ -38,7 +38,6 @@ public class TokenInterceptor implements HandlerInterceptor {
             var authorization = request.getHeader("Authorization");
             var tokenDados = authorizationDecoder.parseToken(authorization);
             request.setAttribute("token", tokenDados);
-            log.debug("Request com token validado");
         }
 
         return true;
