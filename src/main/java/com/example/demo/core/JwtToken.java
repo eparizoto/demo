@@ -1,6 +1,6 @@
 package com.example.demo.core;
 
 
-public interface AdquireTokenJwt {
+public interface JwtToken {
     String getTokenJwt(String usuario, Long funcional);
 }

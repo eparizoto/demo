@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class LoginService {
 
     @Autowired
-    private AdquireTokenJwt jwtUtils;
+    private JwtToken jwtUtils;
 
     public Token getToken(String nomeUsuario, Long funcional) {
 

@@ -1,6 +1,6 @@
 package com.example.demo.infra;
 
-import com.example.demo.core.AdquireTokenJwt;
+import com.example.demo.core.JwtToken;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-public class JwtTokenUtil implements AdquireTokenJwt {
+public class JwtTokenImpl implements JwtToken {
 
     private static final long EXPIRE_DURATION_MS = 10000L;
 
@@ -20,8 +20,6 @@ public class JwtTokenUtil implements AdquireTokenJwt {
     public String getTokenJwt(String usuario, Long funcional) {
 
         return Jwts.builder()
-                //.setIssuer("CodeJava")
-                //.setSubject(String.format("%s,%s", usuario, funcional))
                 .claim("nomeUsuario",usuario)
                 .claim("funcional",funcional)
                 .setIssuedAt(new Date())
