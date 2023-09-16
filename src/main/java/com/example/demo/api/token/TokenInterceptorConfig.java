@@ -18,8 +18,9 @@ public class TokenInterceptorConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(getInterceptor())
+        registry.addInterceptor(getTokenInterceptor())
                 .excludePathPatterns(
+                        "/v1/login/token",
                         "/swagger-ui/*",
                         "/v3/api-docs",
                         "/v3/api-docs/*"
@@ -32,7 +33,7 @@ public class TokenInterceptorConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public TokenInterceptor getInterceptor(){
+    public TokenInterceptor getTokenInterceptor(){
         return new TokenInterceptor();
     }
 }

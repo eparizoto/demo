@@ -1,7 +1,7 @@
 package com.example.demo.core;
 
-import com.example.demo.model.Produto;
-import com.example.demo.model.Produtos;
+import com.example.demo.core.model.produto.Produto;
+import com.example.demo.core.model.produto.Produtos;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

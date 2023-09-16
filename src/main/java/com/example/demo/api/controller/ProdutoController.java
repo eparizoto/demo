@@ -1,7 +1,7 @@
 package com.example.demo.api.controller;
 
 import com.example.demo.core.ProdutoService;
-import com.example.demo.model.Produtos;
+import com.example.demo.core.model.produto.Produtos;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Base64;
+import java.util.Date;
 
 @Log4j2
 @Component
@@ -20,8 +21,6 @@ public class AuthorizationDecoder {
 
         TokenDados tokenDados = null;
 
-        //token to test: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21lVXN1YXJpbyI6Ik1ldSBOb21lIiwiZnVuY2lvbmFsIjoiMTIzNDU2In0.69qK88VRi9pVgldOsmggIkyL3iyz5dETAbvQL2tVtqg
-
         try {
             var decoder = Base64.getDecoder();
             var parse = token.split("\\.");
@@ -31,6 +30,7 @@ public class AuthorizationDecoder {
             tokenDados = TokenDados.builder()
                     .nomeUsuario(jsonNode.get("nomeUsuario").asText())
                     .funcional(jsonNode.get("funcional").asInt())
+                    .expiracao(new Date(jsonNode.get("exp").asLong()))
                     .tokenOriginal(token)
                     .build();
         } catch (Exception e) {
@@ -39,7 +39,9 @@ public class AuthorizationDecoder {
             throw new TokenInvalidoException(msg);
         }
 
+        if (new Date().toInstant().getEpochSecond() > tokenDados.getExpiracao().getTime())
+            throw new TokenInvalidoException("Acesso ao sistema não foi permitido. Token expirado.");
+
         return tokenDados;
     }
-
 }

@@ -16,10 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 @Log4j2
 public class TokenInterceptor implements HandlerInterceptor {
-
-//    @Autowired
-//    private LoginService loginService; //serviço validador de token
-
     @Autowired
     private AuthorizationDecoder authorizationDecoder;
 
@@ -41,7 +37,6 @@ public class TokenInterceptor implements HandlerInterceptor {
         if (handler instanceof HandlerMethod) {
             var authorization = request.getHeader("Authorization");
             var tokenDados = authorizationDecoder.parseToken(authorization);
-            //loginService.validarToken(authorization, tokenDados.getFuncional());
             request.setAttribute("token", tokenDados);
             log.debug("Request com token validado");
         }
