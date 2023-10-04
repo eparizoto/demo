@@ -1,13 +1,7 @@
 package com.example.demo.core.model.produto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
+public interface Produto  {
 
-@Builder
-public class Produto {
-    @JsonProperty("id")
-    private Integer id;
+    void preencherOpcoes();
 
-    @JsonProperty("descrição")
-    private String descricao;
 }

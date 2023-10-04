@@ -21,7 +21,7 @@ public class ProdutoController {
     ProdutoService produtoService;
 
     @GetMapping(value = "/produtos", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Produtos> listarProdutos(@RequestParam(value = "loja") Integer loja, @RequestParam(value = "sku") Long sku){
+    public ResponseEntity<Produtos> listarProdutos(@RequestParam(value = "loja") Integer loja, @RequestParam(value = "sku") Long sku) throws Exception {
 
         log.info("Buscando produtos...");
 
